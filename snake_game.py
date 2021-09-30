@@ -18,7 +18,7 @@ width = 20 #Width of initial snake
 height = 20 #Length of initial snake
 vel =1 # Speed of the snake
 fps = pygame.time.Clock()
-snake_moving = "RIGHT"
+snake_moving = "Right"
 
 def quit_game():
     print("Quitting the game")
@@ -31,7 +31,7 @@ while game_running:
 
     pygame.time.delay(10) #Delay the time in the game by 10 seconds(Convinient to use because the game is too fast)
     
-        # Moving the snake
+    # Moving the snake
     if snake_moving == 'Up':
         snake_pos_y -= vel
 
@@ -48,18 +48,24 @@ while game_running:
         if event.type==pygame.QUIT:
             game_running = False
 
+    # Mapping the keys to move the snake
     if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_LEFT:
+        if event.key == pygame.K_LEFT and snake_moving != 'Right':
             snake_moving = 'Left'
-        if event.key == pygame.K_RIGHT:
+        if event.key == pygame.K_RIGHT and snake_moving != 'Left':
             snake_moving = 'Right'
-        if event.key == pygame.K_UP:
+        if event.key == pygame.K_UP and snake_moving != 'Down':
             snake_moving = 'Up'
-        if event.key == pygame.K_DOWN:
+        if event.key == pygame.K_DOWN and snake_moving != 'Up':
             snake_moving = 'Down'
-            
+        # Press escape to quit the game
         if event.key == pygame.K_ESCAPE:
             quit_game()
+
+        #if snake_moving == 'Left':
+         #   if event.key == pygame.K_RIGHT:
+          #      print("safjnkdlsmdf;lsa")
+           #     snake_moving = 'Left'
 
 
 
